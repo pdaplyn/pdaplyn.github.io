@@ -1,0 +1,132 @@
+<html>
+
+<head>
+    <script>
+        async function getSourceAsDOM(url) {
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", url, false);
+            //xmlhttp.setRequestHeader("Cache-Control", "max-stale=3600");
+            xmlhttp.send();
+            parser = new DOMParser();
+            return parser.parseFromString(xmlhttp.responseText, "text/html");
+        }
+
+        async function loadEntries(eventId) {
+            const url = `https://racesignup.co.uk/site/event.php?eventid=${eventId}`;
+            const racesignupDoc = await getSourceAsDOM(url);
+
+            const entryTable = racesignupDoc.querySelector("table#startListTable0 tbody");
+            const entryCollection = entryTable.children;
+
+            const courses = [];
+            const courseParticipants = {};
+            var participants;
+            var course;
+            for (var i = 0; i < entryCollection.length; i++) {
+                const entryRow = entryCollection.item(i);
+
+                if (entryRow.className === "header") {
+                    // save previous participants
+                    if (course && participants.length) {
+                        courseParticipants[course] = participants;
+                    }
+
+                    // new course
+                    course = entryRow.children[0].innerText;
+                    courses.push(course);
+                    participants = [];
+                } else {
+                    participants.push({
+                        name: entryRow.children[0].innerText,
+                        ageClass: entryRow.children[1].innerText,
+                        club: entryRow.children[2].innerText,
+                    });
+                }
+            }
+            // last course
+            if (course && participants.length) {
+                courseParticipants[course] = participants;
+            }
+
+            return [courses, courseParticipants];
+        }
+
+        async function readRankings() {
+            const url = "https://www.britishorienteering.org.uk/datafeed.php?pg=rankings&club=0&assoc=0&gender=&age=-1&paging=0&export="
+            xmlhttp = new XMLHttpRequest();
+            xmlhttp.open("GET", url, false);
+            //xmlhttp.setRequestHeader("Cache-Control", "max-stale=3600");
+            xmlhttp.send();
+            const rawRankings = xmlhttp.responseText;
+            const parsedRankings = rawRankings.split("\n").map(row => row.split(","));
+            const fields = parsedRankings[0];
+
+            const orienteers = {};
+            for (var i = 1; i < parsedRankings.length; i++) {
+                const orienteer = {};
+                const ranking = parsedRankings[i];
+                fields.forEach((fieldName, fieldNum) => {
+                    orienteer[fieldName] = ranking[fieldNum];
+                });
+                orienteers[orienteer.Name] = orienteer;
+            }
+
+            return orienteers;
+        }
+
+        function enrichEntries(entries, rankings) {
+            Object.values(entries).forEach(courseEntries => {
+                courseEntries.forEach(entry => {
+                    const ranking = rankings[entry.name];
+                    entry["ranking"] = ranking ? ranking["Pos."] : undefined;
+                    entry["points"] = ranking?.Points;
+                });
+
+                courseEntries.sort((a, b) => {
+                    if (a.ranking && b.ranking) return a.ranking - b.ranking;
+                    if (a.ranking) return - a.ranking;
+                    if (b.ranking) return b.ranking;
+                });
+            });
+        }
+
+        function render(courses, courseEntries) {
+            const output = document.getElementById("output");
+            courses.forEach(course => {
+                const courseHeading = document.createElement("h3");
+                courseHeading.innerText = course;
+                output.appendChild(courseHeading);
+
+                const entryTable = document.createElement("table");
+                entryTable.innerHTML = "<tr><th>Seed</th><th>B.O. Ranking</th><th>Name</th><th>Age Class<th><th>Club</th></tr>";
+                output.appendChild(entryTable);
+
+                var seeding = 1;
+                courseEntries[course].forEach(entry => {
+                    entryTable.innerHTML += `<tr><td>${entry.ranking ? seeding : 'Unseeded'}</td><td>${entry.ranking ? entry.ranking : 'Not Found'}</td><td>${entry.name}</td><td>${entry.ageClass}<td><td>${entry.club}</td></tr>`;
+                    seeding++;
+                });
+            });
+        }
+
+        async function load(eventId) {
+            const [courses, courseEntries] = await loadEntries(eventId);
+            const orienteerRankings = await readRankings();
+            enrichEntries(courseEntries, orienteerRankings);
+            render(courses, courseEntries);
+            console.log(orienteerRankings);
+        }
+    </script>
+</head>
+
+<body onload="load(3221)">
+    <h1>O-Seeding</h1>
+    <p>Seeding of participants based on their British Orienteering Ranking</p>
+    <p>Simple name-match means not all participants will be found.</p>
+    <h2>Waggoner's Wells - 5th Feb 2023</h2>
+    <div id="output">
+
+    </div>
+</body>
+
+</html>
