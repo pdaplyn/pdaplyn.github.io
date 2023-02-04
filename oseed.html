@@ -3,11 +3,11 @@
 <head>
     <script>
         async function getSourceAsDOM(url) {
-            xmlhttp = new XMLHttpRequest();
+            const xmlhttp = new XMLHttpRequest();
             xmlhttp.open("GET", url, false);
-            //xmlhttp.setRequestHeader("Cache-Control", "max-stale=3600");
+            xmlhttp.setRequestHeader("Cache-Control", "max-stale=3600");
             xmlhttp.send();
-            parser = new DOMParser();
+            const parser = new DOMParser();
             return parser.parseFromString(xmlhttp.responseText, "text/html");
         }
 
@@ -53,10 +53,11 @@
         }
 
         async function readRankings() {
-            const url = "https://www.britishorienteering.org.uk/datafeed.php?pg=rankings&club=0&assoc=0&gender=&age=-1&paging=0&export="
-            xmlhttp = new XMLHttpRequest();
+            // const url = "https://www.britishorienteering.org.uk/datafeed.php?pg=rankings&club=0&assoc=0&gender=&age=-1&paging=0&export=";
+            const url = "https://corsproxy.io/?https%3A%2F%2Fwww.britishorienteering.org.uk%2Fdatafeed.php%3Fpg%3Drankings%26club%3D0%26assoc%3D0%26gender%3D%26age%3D-1%26paging%3D0%26export%3D";
+            const xmlhttp = new XMLHttpRequest();
             xmlhttp.open("GET", url, false);
-            //xmlhttp.setRequestHeader("Cache-Control", "max-stale=3600");
+            xmlhttp.setRequestHeader("Cache-Control", "max-stale=86400");
             xmlhttp.send();
             const rawRankings = xmlhttp.responseText;
             const parsedRankings = rawRankings.split("\n").map(row => row.split(","));
