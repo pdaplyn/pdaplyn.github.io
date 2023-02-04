@@ -12,7 +12,8 @@
         }
 
         async function loadEntries(eventId) {
-            const url = `https://racesignup.co.uk/site/event.php?eventid=${eventId}`;
+            // const url = `https://racesignup.co.uk/site/event.php?eventid=${eventId}`;
+            const url = `https://corsproxy.io/?https%3A%2F%2Fracesignup.co.uk%2Fsite%2Fevent.php%3Feventid%3D${eventId}`;
             const racesignupDoc = await getSourceAsDOM(url);
 
             const entryTable = racesignupDoc.querySelector("table#startListTable0 tbody");
