@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Full Height Test</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"
+    referrerpolicy="origin">
+
+  <link rel="stylesheet" href="https://www.mappage.uk/css/main.css">
+</head>
+
+<body class="vh-100 d-flex flex-column">
+
+  <header class="bg-dark navbar-dark">
+    <div class="container py-2">
+      <div class="d-flex flex-wrap align-items-center justify-content-between">
+        <a href="/" class="d-flex align-items-center me-auto text-white text-decoration-none">
+          <img src="https://www.mappage.uk/images/mappage-icon.svg" height="40" width="41" class="me-1" alt="Mappage Logo" />
+          <h1 class="m-0">Mappage</h1>
+        </a>
+
+        <button type="button" class="btn btn-primary btn-sm ms-1 d-none unauthenticated"
+          id="buttonSignup">Signup</button>
+        <button type="button" class="btn btn-primary btn-sm ms-1 d-none unauthenticated" id="buttonLogin">Login</button>
+
+        <button class="btn btn-secondary bg-transparent ms-1" type="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+          <li>
+            <a href="/generator" class="text-decoration-none">
+              <button type="button" class="btn-secondary dropdown-item">Page Generator</button>
+            </a>
+          </li>
+          <li class="d-none authenticated">
+            <button type="button" class="btn-secondary dropdown-item" id="buttonLogout">Logout</button>
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </header>
+
+  <div class="">
+    <form id="formSearch">
+      <input type="search" minlength="3" maxlength="50"
+        class="form-control position-absolute zindex-top m-2 w-75 border-primary" id="textSearch"
+        placeholder="Search" />
+    </form>
+  </div>
+
+  <div id="mapControl" class="flex-grow-1"></div>
+
+  <div class="border border-primary bg-primary text-white text-center">
+    Generate a PDF of this map <a class="text-white" href="/generator">here</a>
+  </div>
+
+  <div class="container my-1">
+    <footer class="fs-small">
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <span>
+            <script type="application/javascript">document.write("&copy;" + new Date().getFullYear())</script>
+            RockSalt
+          </span>
+        </div>
+
+        <div class="text-center mx-2">
+          If you have any feedback, please <a href="https://www.rocksalt.partners/get-in-touch">get in
+            touch</a>:
+          <span class="d-inline-block">
+            <span>
+              &nbsp;
+              <a rel="noopener" href="mailto:pete@rocksalt.partners?subject=Mappage Feedback"
+                aria-label="Provide feedback via Email">
+                <img src="https://www.mappage.uk/images/icons/envelope-fill.svg" alt="Email" /></a>
+            </span>
+            <span>
+              &nbsp;
+              <a target="_blank" rel="noopener" href="https://www.facebook.com/rocksalt.partners"
+                aria-label="Provide feedback via Facebook">
+                <img src="https://www.mappage.uk/images/icons/facebook.svg" alt="Facebook" /></a>
+            </span>
+            <span>
+              &nbsp;
+              <a target="_blank" rel="noopener" href="https://www.linkedin.com/in/peterdaplyn"
+                aria-label="Provide feedback via LinkedIn">
+                <img src="https://www.mappage.uk/images/icons/linkedin.svg" alt="LinkedIn" /></a>
+            </span>
+            <span>
+              &nbsp;
+              <a target="_blank" rel="noopener" href="https://twitter.com/rocksaltfintech"
+                aria-label="Provide feedback via Twitter">
+                <img src="https://www.mappage.uk/images/icons/twitter.svg" alt="Twitter" /></a>
+            </span>
+          </span>
+        </div>
+
+        <div>
+          <a href="https://rocksalt.partners/" aria-label="Go to RockSalt Partners">
+            <img src="https://www.mappage.uk/images/rocksalt-icon.svg" height="41.2" width="80" alt="RockSalt Logo" />
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Bootstrap Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"
+    referrerpolicy="origin"></script>
+
+</body>
+
+</html>
