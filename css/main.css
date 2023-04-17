@@ -1,0 +1,259 @@
+/* make element dimensions include border & padding */
+* {
+    box-sizing: border-box;
+}
+
+a {
+    color: rgba(48, 124, 128, 1)
+}
+
+a:hover {
+    color: rgba(48, 124, 128, 0.8)
+}
+
+.color-primary {
+    color: #307c80 !important;
+}
+
+.color-secondary {
+    color: rgba(84, 84, 84) !important;
+}
+
+.border-primary {
+    border-color: #307c80 !important;
+}
+
+.border-secondary {
+    border-color: rgba(84, 84, 84) !important;
+}
+
+.border-color-form {
+    border-color: #ced4da !important;
+}
+
+.bg-primary {
+    background-color: #307c80 !important;
+}
+
+.bg-primary-40 {
+    background-color: rgba(48, 124, 128, 0.4);
+}
+
+.bg-secondary {
+    background-color: rgba(84, 84, 84) !important;
+}
+
+.bg-secondary-80 {
+    background-color: rgba(84, 84, 84, 0.8) !important;
+}
+
+.form-check-input:checked,
+.btn-primary {
+    background-color: #307c80 !important;
+    border-color: #599699 !important;
+}
+
+.btn-outline-primary:hover:not(label),
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open>.dropdown-toggle.btn-primary {
+    background-color: rgba(48, 124, 128, 0.8) !important;
+}
+
+.btn-outline-primary {
+    color: #307c80 !important;
+    border-color: #307c80 !important;
+}
+
+option:checked,
+.form-select:focus option:checked,
+/* not working for icon selected option */
+.btn-check:checked+.btn,
+.btn-outline-primary:focus-visible {
+    color: white !important;
+    background-color: rgba(48, 124, 128, 0.8) !important;
+}
+
+.btn-secondary {
+    border-color: rgba(84, 84, 84) !important;
+}
+
+.btn-secondary:hover,
+.btn-secondary:focus,
+.btn-secondary:active,
+.btn-secondary.active,
+.open>.dropdown-toggle.btn-secondary {
+    background-color: rgba(84, 84, 84, 0.8) !important;
+}
+
+.btn-close:focus,
+.btn-primary:focus,
+.btn-outline-primary:focus,
+.form-select:focus,
+.form-check-input:focus,
+.form-control:focus {
+    border-color: #307c80 !important;
+    box-shadow: 0 0 0 0.25rem rgba(48, 124, 128, 0.6) !important;
+}
+
+.form-switch .form-check-input:focus {
+    border-color: #307c80 !important;
+    box-shadow: 0 0 0 0.25rem rgba(48, 124, 128, 0.6) !important;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(48, 124, 128, 1)'/></svg>") !important;
+}
+
+.form-switch .form-check-input:checked {
+    background-color: #307c80 !important;
+    border-color: #307c80 !important;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='rgba(255, 255, 255, 1)'/></svg>") !important;
+}
+
+.accordion-button {
+    color: black;
+    background-color: rgba(84, 84, 84, 0.2);
+}
+
+.accordion-button:not(.collapsed) {
+    color: black;
+    background-color: rgba(48, 124, 128, 0.2);
+}
+
+.accordion-button:focus {
+    border-color: rgba(48, 124, 128, 1);
+    box-shadow: 0 0 0 0.25rem rgba(48, 124, 128, 0.5);
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23307c80'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+}
+
+.expanderButton {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23307c80'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    width: 1rem;
+    height: 1.25rem;
+    background-repeat: no-repeat;
+    transition: transform .2s ease-in-out;
+    background-position: center;
+}
+
+.expanderButton:not(.collapsed) {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    transform: rotate(-180deg);
+}
+
+.expanderButton:focus {
+    box-shadow: none;
+}
+
+/* 
+    combine these two classes to make the height match width up to 75% of viewport height
+    https://stackoverflow.com/questions/5445491/height-equal-to-dynamic-width-css-fluid-layout
+ */
+.h-0 {
+    height: 0px;
+}
+
+.pb-75vh-100 {
+    padding-bottom: min(75vh, 100%);
+}
+
+.h-min-10 {
+    min-height: 10%;
+}
+
+.max-vh-50 {
+    max-height: 50vh;
+}
+
+.max-vh-75 {
+    max-height: 75vh;
+}
+
+.max-vw-75 {
+    max-width: 75vw;
+}
+
+.w-rem-2 {
+    width: 2rem;
+}
+
+.h-rem-2 {
+    height: 2rem;
+}
+
+.w-rem-5 {
+    width: 5rem;
+}
+
+.h-px-140 {
+    height: 140px;
+}
+
+.zindex-top {
+    z-index: 999;
+}
+
+.opacity-90 {
+    opacity: 0.9;
+}
+
+.overflow-y-scroll {
+    overflow-y: scroll;
+}
+
+.fs-small {
+    font-size: small;
+}
+
+.fs-xs {
+    font-size: x-small;
+}
+
+.ms--4px {
+    margin-left: -4px;
+}
+
+.ms--9px {
+    margin-left: -9px;
+}
+
+.flex-1-1-30 {
+    flex: 1 1 30%;
+}
+
+.flex-1-1-70 {
+    flex: 1 1 70%;
+}
+
+.rounded-start {
+    border-bottom-right-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+}
+
+.rounded-end {
+    border-bottom-left-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+}
+
+.g-cols-auto-40px {
+    grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+}
+
+.gap-2-2 {
+    gap: 0.15rem 0.15rem;
+}
+
+.print-retain-color {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+}
+
+.break-inside-avoid {
+    break-inside: avoid;
+}
+
+.break-after-avoid {
+    break-after: avoid;
+}

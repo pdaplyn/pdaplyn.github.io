@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg 
+   id="rocksalt-icon"
+   version="1.1"
+   viewBox="0 0 165 85"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+   <metadata id="metadata">
+      <rdf:RDF>
+         <cc:Work>
+            <dc:format>image/svg+xml</dc:format>
+            <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+         </cc:Work>
+      </rdf:RDF>
+   </metadata>
+   <g id="icon">
+      <path d="M 85,80 h 75 l -75,-75 z" style="fill:#307c80;fill-opacity:0.4" id="large-aqua" />
+      <path d="M 85,80 h 50 l -50,-50 z" style="fill:#307c80;fill-opacity:0.4" id="medium-aqua" />
+      <path d="M 85,80 h 25 l -25,-25 z" style="fill:#307c80;fill-opacity:0.4" id="small-aqua" />
+      <path d="M 80,80 h -75 l 75,-75 z" style="fill:#545454;fill-opacity:0.4" id="large-grey" />
+      <path d="M 80,80 h -50 l 50,-50 z" style="fill:#545454;fill-opacity:0.4" id="medium-grey" />
+      <path d="M 80,80 h -25 l 25,-25 z" style="fill:#545454;fill-opacity:0.4" id="small-grey" />
+   </g>
+</svg>
